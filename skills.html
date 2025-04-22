@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VR | Skills</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #0f1117;
+      --card-color: #1b1f2a;
+      --primary: #00ffe7;
+      --text: #f2f2f2;
+      --accent: #ff61c7;
+      --shadow: 0 4px 20px rgba(0, 255, 231, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text);
+      padding-top: 8rem;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(15, 17, 23, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.2rem;
+      position: relative;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: var(--primary);
+      left: 0;
+      bottom: -4px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      color: var(--primary);
+      margin: 3rem 0;
+    }
+
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem 5%;
+    }
+
+    .skill-category {
+      background: var(--card-color);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-category h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .skill-item {
+      margin: 1rem 0;
+    }
+
+    .skill-name {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .skill-name i {
+      color: var(--primary);
+    }
+
+    .progress-bar {
+      height: 10px;
+      width: 100%;
+      background: #333;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 0.4rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      width: 0;
+      transition: width 1.5s ease;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">VR</a>
+    <nav>
+      <a href="index.html#home">Home</a>
+      <a href="skill.html" class="active">Skills</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="skills">
+    <h2 class="section-title">My Skills</h2>
+    <div class="skills-container">
+      <div class="skill-category">
+        <h3>Frontend</h3>
+        <div class="skill-item">
+          <div class="skill-name"><i class="fab fa-html5"></i> HTML/CSS</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><i class="fab fa-js"></i> JavaScript</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+        </div>
+        
+      </div>
+      <div class="skill-category">
+        <h3>Programming & Database </h3>
+       
+        <div class="skill-item">
+          <div class="skill-name"><i class="fab fa-python"></i> Python</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><i class="fas fa-database"></i>MySql </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Design & Tools</h3>
+        <div class="skill-item">
+          <div class="skill-name"><i class="fas fa-pencil-alt"></i> Canva</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><i class="fab fa-figma"></i> Figma (Basics)</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><i class="fas fa-chart-pie"></i> Ms Office</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 VR Portfolio. All Rights Reserved.
+  </footer>
+</body>
+</html>
