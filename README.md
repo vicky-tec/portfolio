@@ -1,2 +1,2 @@
 # portfolio
-My first portfolio by using HTML, CSS
+My Portfolio created by using HTML, CSS, JavaScripit(little bit)
