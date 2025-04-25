@@ -1,6 +1,7 @@
-# portfolio
-<h1 align="center">Hi 👋, I'm VICKY RAJ</h1>
+# portfolio<h1 align="center">Hi 👋, I'm VICKY RAJ</h1>
 <h3 align="center">A passionate frontend developer from India</h3>
+
+- 🔭 I’m currently working on [Portfolio](https://vicky-tec.github.io/portfolio/)
 
 - 🌱 I’m currently learning **Full stack python development**
 
