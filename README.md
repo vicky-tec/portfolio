@@ -2,8 +2,6 @@
 <h1 align="center">Hi 👋, I'm VICKY RAJ</h1>
 <h3 align="center">A passionate frontend developer from India</h3>
 
-- 🔭 I’m currently working on [TRAVALLY](https://vicky-tec.github.io/TRaVALLY_21/index.html)
-
 - 🌱 I’m currently learning **Full stack python development**
 
 - 👨‍💻 All of my projects are available at [https://github.com/vicky-tec/](https://github.com/vicky-tec/)
