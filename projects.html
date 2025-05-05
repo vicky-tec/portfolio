@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VR | Projects</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    .section-title {
+      text-align: center;
+      font-size: 4rem;
+      color: #1bc4f8;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s forwards 0.3s;
+    }
+
+    .projects-container {
+      padding: 0 9%;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .project-item {
+      background-color: #161616;
+      padding: 2rem;
+      border-left: 5px solid #1bc4f8;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(27, 196, 248, 0.1);
+      transform: translateX(-50px);
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .project-item.visible {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .project-item h3 {
+      font-size: 2.2rem;
+      color: #ADFF2F;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .project-item h3::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      background: #1bc4f8;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+
+    .project-item:hover h3::after {
+      width: 100%;
+    }
+
+    .project-item p {
+      font-size: 1.6rem;
+      color: #ccc;
+      margin-bottom: 0.3rem;
+      transition: transform 0.3s ease;
+    }
+
+    .project-item:hover p {
+      transform: translateX(10px);
+    }
+
+    .project-item p i {
+      margin-right: 1rem;
+      color: #1bc4f8;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      padding: 2rem;
+      font-size: 1.4rem;
+      color: #ccc;
+      opacity: 0;
+      animation: fadeIn 1s forwards 1s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor"></div>
+  <button id="menu-toggle" class="hamburger"><i class="fas fa-bars"></i></button>
+  
+  <header>
+    <a href="index.html" class="logo">My Projects</a>
+    <nav>
+      <a href="index.html#home">Home</a>
+      <a href="Skills.html">Skills</a>
+      <a href="Edu.html">Education</a>
+        <a href="projects.html" class="active">Projects</a>
+      <a href="contact/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section id="projects">
+    <h2 class="section-title">🔆</h2>
+    <div class="projects-container">
+      <div class="project-item">
+        <h3>TRAVALLY: AI Travel Guide</h3>
+        <p><i class="fas fa-map-marked-alt"></i> A smart travel platform powered by an AI chatbot to assist users in discovering tourist places in Bihar.</p>
+        <p><i class="fas fa-code"></i> Tech Stack: HTML, CSS, JavaScript, OpenAI API</p>
+        <p><i class="fas fa-cogs"></i> Features: Chatbot, Place Info, Travel Buddy System</p>
+      </div>
+      <div class="project-item">
+        <h3>Portfolio Website</h3>
+        <p><i class="fas fa-laptop-code"></i> Personal portfolio website to showcase skills, education, and projects.</p>
+        <p><i class="fas fa-code"></i> Tech Stack: HTML, CSS, JavaScript</p>
+        <p><i class="fas fa-mobile-alt"></i> Fully responsive and animated UI</p>
+      </div>
+      <div class="project-item">
+        <h3>Anime-HUB!</h3>
+        <p><i class="fas fa-palette"></i> A Anime website for showcase my Html and CSS skills</p>
+        <p><i class="fas fa-code"></i> Tech Stack: HTML, Canva, CSS, Animations </p>
+        <p><i class="fas fa-mobile-alt"></i> Fully responsive and Anime UI</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <section class="contact-bottom">
+      <h3>Get In Touch</h3>
+      <p><i class="fas fa-envelope"></i> vickyrazzz81@gmail.com</p>
+      <p><i class="fas fa-phone"></i> +91 9798981891</p>
+      <p><i class="fas fa-map-marker-alt"></i> Bihar, India</p>
+    </section>
+    &copy; 2025 VR Portfolio
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Project items animation on scroll
+    const projectItems = document.querySelectorAll('.project-item');
+
+    const animateOnScroll = () => {
+      projectItems.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (itemTop < windowHeight - 100) {
+          item.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
+  </script>
+</body>
+</html>
