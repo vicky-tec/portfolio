@@ -12,6 +12,9 @@
       font-size: 4rem;
       color: #1bc4f8;
       margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s forwards 0.3s;
     }
 
     .education-container {
@@ -27,18 +30,57 @@
       border-left: 5px solid #1bc4f8;
       border-radius: 1rem;
       box-shadow: 0 0 20px rgba(27, 196, 248, 0.1);
+      transform: translateX(-50px);
+      opacity: 0;
+      transition: all 0.5s ease;
     }
+
+    .education-item.visible {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .education-item:nth-child(1) { transition-delay: 0.2s; }
+    .education-item:nth-child(2) { transition-delay: 0.4s; }
+    .education-item:nth-child(3) { transition-delay: 0.6s; }
 
     .education-item h3 {
       font-size: 2.2rem;
       color: #ADFF2F;
       margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .education-item h3::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      background: #1bc4f8;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+
+    .education-item:hover h3::after {
+      width: 100%;
     }
 
     .education-item p {
       font-size: 1.6rem;
       color: #ccc;
       margin-bottom: 0.3rem;
+      transition: transform 0.3s ease;
+    }
+
+    .education-item:hover p {
+      transform: translateX(10px);
+    }
+
+    .education-item p i {
+      margin-right: 1rem;
+      color: #1bc4f8;
     }
 
     footer {
@@ -47,45 +89,85 @@
       padding: 2rem;
       font-size: 1.4rem;
       color: #ccc;
+      opacity: 0;
+      animation: fadeIn 1s forwards 1s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
   <div class="cursor"></div>
   <button id="menu-toggle" class="hamburger"><i class="fas fa-bars"></i></button>
+  
   <header>
-    <a href="index.html" class="logo">VR</a>
+    <a href="index.html" class="logo">My Education</a>
     <nav>
       <a href="index.html#home">Home</a>
       <a href="Skills.html">Skills</a>
+      <a href="Edu.html" class="active">Education</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <section id="education">
-    <h2 class="section-title">My Education</h2>
+    <h2 class="section-title">🔆</h2>
     <div class="education-container">
       <div class="education-item">
         <h3>B.Sc in Computer Science and Data Analytics</h3>
-        <p>IIT Patna</p>
-        <p>2024 - Present</p>
-        <p>Currently pursuing core subjects in Data Analytics, Programming, and Mathematics.</p>
+        <p><i class="fas fa-university"></i> IIT Patna</p>
+        <p><i class="far fa-calendar-alt"></i> 2024 - Present</p>
+        <p><i class="fas fa-book"></i> Currently pursuing core subjects in Data Analytics, Programming, and Mathematics.</p>
       </div>
       <div class="education-item">
         <h3>12th Grade – Science Stream</h3>
-        <p>BD College / Bihar Board</p>
-        <p>Year of Passing: 2024</p>
-        <p>Focus: Physics, Chemistry, Mathematics</p>
+        <p><i class="fas fa-university"></i> BD College / Bihar Board</p>
+        <p><i class="far fa-calendar-alt"></i> Year of Passing: 2024</p>
+        <p><i class="fas fa-atom"></i> Focus: Physics, Chemistry, Mathematics</p>
       </div>
       <div class="education-item">
         <h3>10th Grade</h3>
-        <p>MS Memorial Academy School / CBSE Board</p>
-        <p>Year of Passing: 2022</p>
+        <p><i class="fas fa-school"></i> MS Memorial Academy School / CBSE Board</p>
+        <p><i class="far fa-calendar-alt"></i> Year of Passing: 2022</p>
       </div>
     </div>
   </section>
 
   <footer>
+    <section class="contact-bottom">
+      <h3>Get In Touch</h3>
+      <p><i class="fas fa-envelope"></i> vickyrazzz81@gmail.com</p>
+      <p><i class="fas fa-phone"></i> +91 9798981891</p>
+      <p><i class="fas fa-map-marker-alt"></i> Bihar, India</p>
+    </section>
     &copy; 2025 VR Portfolio
   </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Education items animation on scroll
+    const educationItems = document.querySelectorAll('.education-item');
+    
+    const animateOnScroll = () => {
+      educationItems.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (itemTop < windowHeight - 100) {
+          item.classList.add('visible');
+        }
+      });
+    };
+
+    // Run once on load and then on scroll
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
+  </script>
 </body>
 </html>
