@@ -12,6 +12,9 @@
       font-size: 4rem;
       color: #1bc4f8;
       margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s forwards 0.3s;
     }
 
     .skills-container {
@@ -26,16 +29,53 @@
       border-radius: 1.5rem;
       padding: 2rem;
       box-shadow: 0 0 20px rgba(27, 196, 248, 0.15);
+      transform: scale(0.95);
+      opacity: 0;
+      transition: all 0.5s ease;
     }
+
+    .skill-category.visible {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .skill-category:nth-child(1) { transition-delay: 0.2s; }
+    .skill-category:nth-child(2) { transition-delay: 0.4s; }
+    .skill-category:nth-child(3) { transition-delay: 0.6s; }
 
     .skill-category h3 {
       font-size: 2.5rem;
       color: #ADFF2F;
       margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .skill-category h3::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      background: #1bc4f8;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+
+    .skill-category:hover h3::after {
+      width: 100%;
     }
 
     .skill-item {
       margin-bottom: 1.5rem;
+      transform: translateX(-20px);
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .skill-category.visible .skill-item {
+      transform: translateX(0);
+      opacity: 1;
     }
 
     .skill-name {
@@ -45,6 +85,11 @@
       gap: 1rem;
       margin-bottom: 0.5rem;
       color: white;
+      transition: color 0.3s ease;
+    }
+
+    .skill-category:hover .skill-name {
+      color: #ADFF2F;
     }
 
     .progress-bar {
@@ -53,29 +98,19 @@
       height: 1rem;
       border-radius: 1rem;
       overflow: hidden;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
     }
 
     .progress-fill {
       height: 100%;
       background: linear-gradient(to right, #1bc4f8, #ADFF2F);
       border-radius: 1rem;
-      transition: width 1.2s ease;
+      width: 0;
+      transition: width 1.2s ease 0.3s;
     }
 
-    .contact-bottom {
-      text-align: center;
-      margin-top: 6rem;
-      font-size: 1.6rem;
-      color: white;
-    }
-    .contact-bottom h3 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #1bc4f8;
-    }
-    .contact-bottom p {
-      margin: 0.5rem 0;
-      color: #ccc;
+    .skill-category.visible .progress-fill {
+      width: var(--width);
     }
 
     footer {
@@ -84,32 +119,45 @@
       padding: 2rem;
       font-size: 1.4rem;
       color: #ccc;
+      opacity: 0;
+      animation: fadeIn 1s forwards 1s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
   <div class="cursor"></div>
   <button id="menu-toggle" class="hamburger"><i class="fas fa-bars"></i></button>
+  
   <header>
-    <a href="index.html" class="logo">VR</a>
+    <a href="index.html" class="logo">My Skills</a>
     <nav>
       <a href="index.html#home">Home</a>
       <a href="Edu.html">Education</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="Skills.html" class="active">Skills</a>
     </nav>
   </header>
 
   <section id="skills">
-    <h2 class="section-title">My Skills</h2>
+    <h2 class="section-title">🔆</h2>
     <div class="skills-container">
       <div class="skill-category">
         <h3>Frontend</h3>
         <div class="skill-item">
           <div class="skill-name"><i class="fab fa-html5"></i> HTML/CSS</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="--width:90%"></div></div>
         </div>
         <div class="skill-item">
           <div class="skill-name"><i class="fab fa-js"></i> JavaScript</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="--width:85%"></div></div>
         </div>
       </div>
 
@@ -117,11 +165,11 @@
         <h3>Programming & Database</h3>
         <div class="skill-item">
           <div class="skill-name"><i class="fab fa-python"></i> Python</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="--width:70%"></div></div>
         </div>
         <div class="skill-item">
           <div class="skill-name"><i class="fas fa-database"></i> MySQL</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="--width:65%"></div></div>
         </div>
       </div>
 
@@ -129,30 +177,59 @@
         <h3>Design & Tools</h3>
         <div class="skill-item">
           <div class="skill-name"><i class="fas fa-pencil-alt"></i> Canva</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="--width:85%"></div></div>
         </div>
         <div class="skill-item">
           <div class="skill-name"><i class="fab fa-figma"></i> Figma (Basics)</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="--width:75%"></div></div>
         </div>
         <div class="skill-item">
           <div class="skill-name"><i class="fas fa-chart-pie"></i> MS Office</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="--width:70%"></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  
-
   <footer>
     <section class="contact-bottom">
-    <h3>Get In Touch</h3>
-    <p><i class="fas fa-envelope"></i> vickyrazzz81@gmail.com</p>
-    <p><i class="fas fa-phone"></i> +91 9798981891</p>
-    <p><i class="fas fa-map-marker-alt"></i> Bihar, India</p>
-  </section>
+      <h3>Get In Touch</h3>
+      <p><i class="fas fa-envelope"></i> vickyrazzz81@gmail.com</p>
+      <p><i class="fas fa-phone"></i> +91 9798981891</p>
+      <p><i class="fas fa-map-marker-alt"></i> Bihar, India</p>
+    </section>
     &copy; 2025 VR Portfolio
   </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Skills animation on scroll
+    const skillCategories = document.querySelectorAll('.skill-category');
+    const skillItems = document.querySelectorAll('.skill-item');
+    
+    const animateOnScroll = () => {
+      skillCategories.forEach((category, index) => {
+        const categoryTop = category.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (categoryTop < windowHeight - 100) {
+          category.classList.add('visible');
+          
+          // Animate skill items with staggered delay
+          const items = category.querySelectorAll('.skill-item');
+          items.forEach((item, i) => {
+            setTimeout(() => {
+              item.style.transitionDelay = `${i * 0.1}s`;
+              item.classList.add('visible');
+            }, 300);
+          });
+        }
+      });
+    };
+
+    // Run once on load and then on scroll
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
+  </script>
 </body>
 </html>
